@@ -5,7 +5,7 @@ This project is just to show my handwriting in coding by Jav, Spring FrameWork, 
 to help others have better understanding my ability.
 In this couse I used :
 
-User Front :
+- User Front :
   -Backend :
     - Spring Boot
     - Spring Security
@@ -19,9 +19,9 @@ User Front :
     - JQuery
     
   -DataBase:
-    -MySQL
+    - MySQL
     
-Admin Portal : 
+- Admin Portal : 
   - Angular5
   - TypeScript
 
