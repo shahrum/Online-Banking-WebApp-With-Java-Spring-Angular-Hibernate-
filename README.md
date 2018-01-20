@@ -18,6 +18,8 @@ In this couse I used :
     - JQuery
   -DataBase:
     - MySQL
+    
+    
 -Admin Portal : 
   - Angular5
   - TypeScript
