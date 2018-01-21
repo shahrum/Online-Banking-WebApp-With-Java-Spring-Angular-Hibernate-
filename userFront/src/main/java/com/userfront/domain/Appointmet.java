@@ -2,13 +2,29 @@ package com.userfront.domain;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+@Entity
 public class Appointmet {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	public long id;
+	
 	public Date date;
 	public String location;
 	public String description;
 	private boolean confirmed;
+	
+	@ManyToOne
+	@JoinColumn(name="user_id")
 	private User user;
+	
 	public long getId() {
 		return id;
 	}
