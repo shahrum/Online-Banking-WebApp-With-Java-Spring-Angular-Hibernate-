@@ -5,5 +5,5 @@ import com.userfront.domain.SavingsAccount;
 
 public interface AccountService {
 	PrimaryAccount createPrimaryAccount();
-	SavingsAccount createSavingsAccount();
+    SavingsAccount createSavingsAccount();
 }
