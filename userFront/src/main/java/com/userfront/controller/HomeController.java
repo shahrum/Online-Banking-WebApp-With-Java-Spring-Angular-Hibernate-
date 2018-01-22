@@ -72,13 +72,15 @@ public class HomeController {
 	
 	@RequestMapping("/userFront")
 	public String userFront(Principal principal, Model model) {
-        User user = userService.findByUsername(principal.getName());
-        PrimaryAccount primaryAccount = user.getPrimaryAccount();
-        SavingsAccount savingsAccount = user.getSavingsAccount();
-
-        model.addAttribute("primaryAccount", primaryAccount);
-        model.addAttribute("savingsAccount", savingsAccount);
-
+		
+		User user = userService.findByUsername(principal.getName());
+		PrimaryAccount primaryAccount = user.getPrimaryAccount();
+		SavingsAccount savingAccount = user.getSavingsAccount();
+		
+		//bind to our html for using in {primaryAccount} and {savingAccount} variables
+		model.addAttribute("primaryAccount",primaryAccount);
+		model.addAttribute("savingsAccount", savingAccount);
+		
         return "userFront";
     }
 }
