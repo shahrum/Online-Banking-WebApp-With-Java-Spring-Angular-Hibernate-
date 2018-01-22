@@ -5,12 +5,15 @@ import java.security.Principal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.userfront.domain.PrimaryAccount;
 import com.userfront.domain.SavingsAccount;
 import com.userfront.domain.User;
+import com.userfront.service.AccountService;
 import com.userfront.service.UserService;
 
 @Controller
@@ -18,6 +21,9 @@ import com.userfront.service.UserService;
 public class AccountController {
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private AccountService accountService;
 
 	@RequestMapping("/primaryAccount")
 	public String primaryAccount(Model model, Principal principal) {
@@ -35,4 +41,40 @@ public class AccountController {
 		
 		return "savingsAccount";
 	}
+	
+	@GetMapping("/deposit")
+	public String deposit(Model model) {
+		model.addAttribute("accountType","");
+		model.addAttribute("amount", "");
+		return "deposit";
+	}
+	
+	@PostMapping("/deposit")
+	public String deposit(@ModelAttribute("accountType") String accountType, @ModelAttribute("amount") String amount, Principal principal) {
+
+		accountService.deposit(accountType, Double.parseDouble(amount), principal);
+		return "redirect:/userFront";
+		
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
