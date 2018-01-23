@@ -1,6 +1,7 @@
 package com.userfront.controller;
 
 import java.security.Principal;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.userfront.domain.PrimaryAccount;
+import com.userfront.domain.Recipient;
 import com.userfront.domain.SavingsAccount;
 import com.userfront.domain.User;
 import com.userfront.service.TransactionService;
@@ -49,4 +51,16 @@ public class TransferController {
 		return "redirect:/userFront";
 	}
 
+	@GetMapping("/recipient")
+	public String recipient(Model _model, Principal _principal) {
+		
+		List<Recipient> _recipientList = _transactionService.findRecipientList(_principal);
+		
+		Recipient _recipient = new Recipient();
+		
+		_model.addAttribute("recipient", _recipient);
+		_model.addAttribute("recipientList", _recipientList);
+		return "recipient";
+	}
+	
 }
