@@ -32,22 +32,21 @@ public class AccountController {
 	@Autowired
 	private TransactionService transactionService;
 
-	@RequestMapping("/primaryAccount")
+	@GetMapping("/primaryAccount")
 	public String primaryAccount(Model model, Principal principal) {
 		
 		List<PrimaryTransaction> primaryTransactionList = transactionService.findPrimaryTransactionList(principal.getName());
 		
 		User user = userService.findByUsername(principal.getName());
-		
-		PrimaryAccount primaryAccount = user.getPrimaryAccount();
-		
-		model.addAttribute("primaryAccount", primaryAccount);
-		model.addAttribute("primaryTransactionList", primaryTransactionList);
+        PrimaryAccount primaryAccount = user.getPrimaryAccount();
+
+        model.addAttribute("primaryAccount", primaryAccount);
+        model.addAttribute("primaryTransactionList", primaryTransactionList);
 		
 		return "primaryAccount";
 	}
 	
-	@RequestMapping("/savingsAccount")
+	@GetMapping("/savingsAccount")
 	public String savingsAccount(Model model, Principal principal) {
 		List<SavingsTransaction> savingsTransactioList = transactionService.findSavingsTransactionList(principal.getName());
 		
@@ -56,7 +55,7 @@ public class AccountController {
 		SavingsAccount savingsAccount = user.getSavingsAccount();
 		
 		model.addAttribute("savingsAccount", savingsAccount);
-		model.addAttribute("savingsTransactionList",savingsTransactioList);
+		model.addAttribute("savingsTransactionList", savingsTransactioList);
 		
 		return "savingsAccount";
 	}

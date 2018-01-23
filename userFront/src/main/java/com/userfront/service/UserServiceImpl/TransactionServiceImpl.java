@@ -43,13 +43,25 @@ public class TransactionServiceImpl implements TransactionService {
 
 	@Override
 	public void savePrimaryDepositTransaction(PrimaryTransaction primaryTransaction) {
-		// TODO Auto-generated method stub
+		priamryTransactionDao.save(primaryTransaction);
 		
 	}
 
 	@Override
 	public void saveSavingsDepositTransaction(SavingsTransaction savingsTransaction) {
-		// TODO Auto-generated method stub
+		savingsTransactionDao.save(savingsTransaction);
+		
+	}
+
+	@Override
+	public void savePrimaryWithdrawTransaction(PrimaryTransaction primaryTransaction) {
+		priamryTransactionDao.save(primaryTransaction);
+		
+	}
+
+	@Override
+	public void saveSavingsWithdrawTransaction(SavingsTransaction savingsTransaction) {
+		savingsTransactionDao.save(savingsTransaction);
 		
 	}
 

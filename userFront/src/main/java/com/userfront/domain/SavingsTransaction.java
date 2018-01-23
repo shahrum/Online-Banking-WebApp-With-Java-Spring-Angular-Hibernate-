@@ -20,7 +20,8 @@ public class SavingsTransaction {
 	private  String type;
 	private  String status;
 	private double amount;
-	private BigDecimal availabelBalance;
+	private BigDecimal availableBalance;
+					   
 	
 	@ManyToOne
 	@JoinColumn(name="savings_account_id")
@@ -31,13 +32,13 @@ public class SavingsTransaction {
 	}
 	
 	public SavingsTransaction(Date date, String description, String type, String status, double amount,
-			BigDecimal availabelBalance, SavingsAccount savingsAccount) {
+			BigDecimal availableBalance, SavingsAccount savingsAccount) {
 		this.date = date;
 		this.description = description;
 		this.type = type;
 		this.status = status;
 		this.amount = amount;
-		this.availabelBalance = availabelBalance;
+		this.availableBalance = availableBalance;
 		this.savingsAccount = savingsAccount;
 	}
 	
@@ -77,11 +78,11 @@ public class SavingsTransaction {
 	public void setAmount(double amount) {
 		this.amount = amount;
 	}
-	public BigDecimal getAvailabelBalance() {
-		return availabelBalance;
+	public BigDecimal getAvailableBalance() {
+		return availableBalance;
 	}
-	public void setAvailabelBalance(BigDecimal availabelBalance) {
-		this.availabelBalance = availabelBalance;
+	public void setAvailableBalance(BigDecimal availabelBalance) {
+		this.availableBalance = availabelBalance;
 	}
 	public SavingsAccount getSavingsAccount() {
 		return savingsAccount;
@@ -92,7 +93,7 @@ public class SavingsTransaction {
 	@Override
 	public String toString() {
 		return "SavingsTransaction [id=" + id + ", date=" + date + ", description=" + description + ", type=" + type
-				+ ", status=" + status + ", amount=" + amount + ", availabelBalance=" + availabelBalance
+				+ ", status=" + status + ", amount=" + amount + ", availabelBalance=" + availableBalance
 				+ ", savingsAccount=" + savingsAccount + "]";
 	}
 	

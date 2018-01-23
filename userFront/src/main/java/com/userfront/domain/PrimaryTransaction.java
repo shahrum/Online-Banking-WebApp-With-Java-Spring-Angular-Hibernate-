@@ -20,7 +20,7 @@ public class PrimaryTransaction {
 	private  String type;
 	private  String status;
 	private double amount;
-	private BigDecimal availabelBalance;
+	private BigDecimal availableBalance;
 	
 	@ManyToOne()
 	@JoinColumn(name="primary_account_id")
@@ -31,13 +31,13 @@ public class PrimaryTransaction {
 	}
 
 	public PrimaryTransaction(Date date, String description, String type, String status, double amount,
-			BigDecimal availabelBalance, PrimaryAccount primaryAccount) {
+			BigDecimal availableBalance, PrimaryAccount primaryAccount) {
 		this.date = date;
 		this.description = description;
 		this.type = type;
 		this.status = status;
 		this.amount = amount;
-		this.availabelBalance = availabelBalance;
+		this.availableBalance = availableBalance;
 		this.primaryAccount = primaryAccount;
 	}
 
@@ -89,12 +89,12 @@ public class PrimaryTransaction {
 		this.amount = amount;
 	}
 
-	public BigDecimal getAvailabelBalance() {
-		return availabelBalance;
+	public BigDecimal getAvailableBalance() {
+		return availableBalance;
 	}
 
-	public void setAvailabelBalance(BigDecimal availabelBalance) {
-		this.availabelBalance = availabelBalance;
+	public void setAvailableBalance(BigDecimal availableBalance) {
+		this.availableBalance = availableBalance;
 	}
 
 	public PrimaryAccount getPrimaryAccount() {
@@ -108,7 +108,7 @@ public class PrimaryTransaction {
 	@Override
 	public String toString() {
 		return "PrimaryTransaction [id=" + id + ", date=" + date + ", description=" + description + ", type=" + type
-				+ ", status=" + status + ", amount=" + amount + ", availabelBalance=" + availabelBalance
+				+ ", status=" + status + ", amount=" + amount + ", availableBalance=" + availableBalance
 				+ ", primaryAccount=" + primaryAccount + "]";
 	}
 	
