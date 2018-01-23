@@ -7,7 +7,7 @@ import com.userfront.domain.SavingsTransaction;
 
 public interface TransactionService {
 	
-	List<PrimaryTransaction> findPrimarytransactionList(String username);
+	List<PrimaryTransaction> findPrimaryTransactionList(String username);
 	List<SavingsTransaction> findSavingsTransactionList(String username);
 	void savePrimaryDepositTransaction(PrimaryTransaction primaryTransaction);
 	void saveSavingsDepositTransaction(SavingsTransaction savingsTransaction);

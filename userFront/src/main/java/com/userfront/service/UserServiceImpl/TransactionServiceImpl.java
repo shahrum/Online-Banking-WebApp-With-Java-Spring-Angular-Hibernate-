@@ -25,8 +25,8 @@ public class TransactionServiceImpl implements TransactionService {
 	private SavingsTransactionDao savingsTransactionDao;
 	
 	
-	public List<PrimaryTransaction> findPrimarytransactionList(String username){
-		
+	@Override
+	public List<PrimaryTransaction> findPrimaryTransactionList(String username) {
 		User user = userService.findByUsername(username);
 		List<PrimaryTransaction> primaryTransactionList = user.getPrimaryAccount().getPrimaryTransactionList();
 		
@@ -52,6 +52,8 @@ public class TransactionServiceImpl implements TransactionService {
 		// TODO Auto-generated method stub
 		
 	}
+
+	
 	
 	
 	
