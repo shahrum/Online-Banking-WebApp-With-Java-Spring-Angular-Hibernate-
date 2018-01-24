@@ -1,18 +1,23 @@
 package com.userfront.service.UserServiceImpl;
 
 import java.math.BigDecimal;
+import java.security.Principal;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.userfront.dao.PrimaryAccountDao;
 import com.userfront.dao.PrimaryTransactionDao;
+import com.userfront.dao.RecipientDao;
 import com.userfront.dao.SavingsAccountDao;
 import com.userfront.dao.SavingsTransactionDao;
 import com.userfront.domain.PrimaryAccount;
 import com.userfront.domain.PrimaryTransaction;
+import com.userfront.domain.Recipient;
 import com.userfront.domain.SavingsAccount;
 import com.userfront.domain.SavingsTransaction;
 import com.userfront.domain.User;
@@ -35,6 +40,9 @@ public class TransactionServiceImpl implements TransactionService {
 	
 	@Autowired
 	private SavingsAccountDao _savingsAccountDao;
+	
+	@Autowired
+	private RecipientDao _recipientDao;
 	
 	
 	@Override
@@ -135,6 +143,33 @@ public class TransactionServiceImpl implements TransactionService {
 		}else {
 			throw new Exception("Invalid transfer");
 		}
+		
+	}
+
+	@Override
+	public List<Recipient> findRecipientList(Principal _principal) {
+		String _username = _principal.getName();
+		List<Recipient> _recipienList = 
+				_recipientDao.findAll().stream()
+				.filter(recipient -> _username.equals(recipient.getUser().getUsername()))
+				.collect(Collectors.toList());
+		return _recipienList;
+	}
+
+	@Override
+	public void saveRecipient(Recipient _recipient) {
+		_recipientDao.save(_recipient);
+		
+	}
+
+	@Override
+	public Recipient findRecipientByName(String _recipientName) {
+		return _recipientDao.findByName(_recipientName);
+	}
+
+	@Override
+	public void deleteRecipientByName(String _recipientName) {
+		_recipientDao.deleteByName(_recipientName);
 		
 	}
 
