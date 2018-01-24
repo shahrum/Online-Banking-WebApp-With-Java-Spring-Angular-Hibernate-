@@ -32,5 +32,8 @@ public interface TransactionService {
 	Recipient findRecipientByName(String _recipientName);
 
 	void deleteRecipientByName(String _recipientName);
+
+	void toSomeoneElseTransfer(Recipient _recipient, String _accountType, String _amount, PrimaryAccount _primaryAccount,
+			SavingsAccount _savingsAccount);
     
 }
