@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 
 import com.userfront.domain.PrimaryAccount;
 import com.userfront.domain.Recipient;
@@ -63,4 +65,62 @@ public class TransferController {
 		return "recipient";
 	}
 	
+	@PostMapping("/recipient/save")
+	public String recipient(@ModelAttribute("recipient") Recipient _recipient, Principal _principal) {
+		User _user = _userService.findByUsername(_principal.getName());
+		_recipient.setUser(_user);
+		_transactionService.saveRecipient(_recipient);
+		
+		return "redirect:/transfer/recipient";
+	}
+	
+	@GetMapping("/recipient/edit")
+	public String recipientEdit(@RequestParam(value="recipientName") String _recipientName, Model _model, Principal _principal) {
+		Recipient _recipient = _transactionService.findRecipientByName(_recipientName);
+		List<Recipient> _recipientList= _transactionService.findRecipientList(_principal);
+		_model.addAttribute("recipient", _recipient);
+		_model.addAttribute("recipientList", _recipientList);
+		return "recipient";
+	}
+	
+	@GetMapping("/recipient/delete")
+	public String recipientDelete(@RequestParam("recipientName") String _recipientName, Model _model, Principal _principal) {
+		_transactionService.deleteRecipientByName(_recipientName);
+		List<Recipient> _recipientList = _transactionService.findRecipientList(_principal);
+		Recipient _recipient = new Recipient();
+		_model.addAttribute("recipient", _recipient);
+		_model.addAttribute("recipientList", _recipientList);
+		
+		return "recipient";
+	}
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
