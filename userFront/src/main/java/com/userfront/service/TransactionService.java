@@ -26,5 +26,11 @@ public interface TransactionService {
     void betweenAccountsTransfer(String _transferFrom,String _transferTo,String _amount,PrimaryAccount _primaryAccounts,SavingsAccount _savingsAccoutns) throws Exception ;
 
 	List<Recipient> findRecipientList(Principal _principal);
+
+	void saveRecipient(Recipient _recipient);
+
+	Recipient findRecipientByName(String _recipientName);
+
+	void deleteRecipientByName(String _recipientName);
     
 }
