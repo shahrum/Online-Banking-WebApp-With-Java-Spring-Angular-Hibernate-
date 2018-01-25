@@ -29,11 +29,15 @@ public class UserController {
 	@PostMapping("/profile")
 	public String profile(@ModelAttribute("user") User _newUser, Model _model) {
 		User _user = _userService.findByUsername(_newUser.getUsername());
-		
+		_user.setUsername(_newUser.getUsername());
+		_user.setFirstName(_newUser.getFirstName());
+		_user.setLastName(_newUser.getLastName());
+		_user.setEmail(_newUser.getEmail());
+		_user.setPhone(_newUser.getPhone());
 		
 		_model.addAttribute("user",_user);
 		
-		_userService.save(_user);
+		_userService.saveUser(_user);
 		return "profile";
 	}
 
