@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private _loginService:LoginService) { 
   	//local storage is sth like cookie but much more better :D
-  	if (localStorage.getItem('PortalAdminHasLoggedIn') == '' && localStorage.getItem('PortalAdminHasLoggedIn') == null) { 
+  	if (localStorage.getItem('PortalAdminHasLoggedIn') == '' || localStorage.getItem('PortalAdminHasLoggedIn') == null) { 
   		this.loggedIn = false;
   	} else {
   		this.loggedIn = true;
