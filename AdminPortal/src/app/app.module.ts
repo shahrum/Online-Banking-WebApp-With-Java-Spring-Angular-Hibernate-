@@ -8,15 +8,18 @@ import { routing } from './app.routing';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
+import { UserAccountComponent } from './user-account/user-account.component';
 
 import { LoginService } from './services/login.service';
+import { UserService } from './services/user.service';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    LoginComponent
+    LoginComponent,
+    UserAccountComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +28,8 @@ import { LoginService } from './services/login.service';
     routing
   ],
   providers: [
-    LoginService
+    LoginService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })
