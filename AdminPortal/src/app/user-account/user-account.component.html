@@ -24,7 +24,7 @@
 			<td><a (click)="onSelectPrimary(user.username)">{{user.primaryAccount.accountBalance}}</a></td>
 			<td><a (click)="onSelectSavings(user.username)">{{user.savingsAccount.accountBalance}}</a></td>
 			<td>{{user.enabled}}</td>
-			<td *ngIf="!(user.enabled)"><a (click)="enableUser(user.username)">Enable</a></td>
+			<td *ngIf="!user.enabled"><a (click)="enableUser(user.username)">Enable</a></td>
 			<td *ngIf="user.enabled"><a (click)="disableUser(user.username)">Disable</a></td>
 		</tr>
 	</tbody>

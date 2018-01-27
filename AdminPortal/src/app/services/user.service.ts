@@ -12,12 +12,12 @@ export class UserService {
   }
 
   getPrimaryTransactionList(username:string){
-	let url = "http://localhost:9090/api/user/primary/transaction?usename="+ username;
+	let url = "http://localhost:9090/api/user/primary/transaction?username="+ username;
   	return this.http.get(url,{withCredentials:true});
   }
 
   getSavingsTransactionList(username:string){
-  	let url = "http://localhost:9090/api/user/savings/transaction?usename="+ username;
+  	let url = "http://localhost:9090/api/user/savings/transaction?username="+ username;
   	return this.http.get(url,{withCredentials:true});
   }
   
@@ -27,7 +27,7 @@ export class UserService {
    }
 
    disableUser (username: string) {
-     let url = "http://localhost:8080/api/user/"+username+"/disable";
+     let url = "http://localhost:9090/api/user/"+username+"/disable";
      return this.http.get(url, { withCredentials: true });
    }
 
