@@ -20,13 +20,15 @@ export class UserService {
   	let url = "http://localhost:9090/api/user/savings/transaction?usename="+ username;
   	return this.http.get(url,{withCredentials:true});
   }
-  enableUser(username:string){
-        let url = "http://localhost:9090/api/user/"+username+"/enable";
-        return this.http.get(url,{withCredentials:true});
-  }
-  disableUser(username:string){
-        let url = "http://localhost:9090/api/user/"+username+"/disable";
-        return this.http.get(url,{withCredentials:true});
-  }
+  
+  enableUser (username: string) {
+     let url = "http://localhost:9090/api/user/"+username+"/enable";
+     return this.http.get(url, { withCredentials: true });
+   }
+
+   disableUser (username: string) {
+     let url = "http://localhost:8080/api/user/"+username+"/disable";
+     return this.http.get(url, { withCredentials: true });
+   }
 
 }
