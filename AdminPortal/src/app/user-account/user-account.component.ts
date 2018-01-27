@@ -16,12 +16,13 @@ export class UserAccountComponent implements OnInit {
 	}
 
 	getUsers() {
+    alert('getUsers----user-account.component')
 		this.userService.getUsers().subscribe(
 			res => {
-        		this.userList = JSON.parse(JSON.parse(JSON.stringify(res))._body);
+        		this.userList = JSON.parse(JSON.parse(JSON.stringify(res)).body);
       		},
       		error => console.log(error)
-		)
+		);
 	}
 
 	onSelectPrimary(username: string) {

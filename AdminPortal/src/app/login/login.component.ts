@@ -22,6 +22,7 @@ export class LoginComponent implements OnInit {
   }
   
   onSubmit() {
+    alert('login.component ---  onSubmit()');
     this.loginService.sendCredential(this.username, this.password).subscribe(
       res => {
         this.loggedIn=true;
