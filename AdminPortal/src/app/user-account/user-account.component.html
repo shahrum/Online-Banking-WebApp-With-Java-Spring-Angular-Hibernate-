@@ -21,11 +21,11 @@
 			<td>{{user.lastName}}</td>
 			<td>{{user.email}}</td>
 			<td>{{user.phone}}</td>
-			<td><a (click)="onSelectPrimary(user.username)">{{user.primaryAccount.accountBalance}}</a></td>
-			<td><a (click)="onSelectSavings(user.username)">{{user.savingsAccount.accountBalance}}</a></td>
+			<td><a (click)="onSelectPrimary(user.username)" style="cursor: pointer;">{{user.primaryAccount.accountBalance}}</a></td>
+			<td><a (click)="onSelectSavings(user.username)" style="cursor: pointer;">{{user.savingsAccount.accountBalance}}</a></td>
 			<td>{{user.enabled}}</td>
-			<td *ngIf="!user.enabled"><a (click)="enableUser(user.username)">Enable</a></td>
-			<td *ngIf="user.enabled"><a (click)="disableUser(user.username)">Disable</a></td>
+			<td [hidden]="user.enabled"><a (click)="enableUser(user.username)" style="cursor: pointer;">Enable</a></td>
+			<td [hidden]="!user.enabled"><a (click)="disableUser(user.username)" style="cursor: pointer;">Disable</a></td>
 		</tr>
 	</tbody>
 </table>   

@@ -11,26 +11,26 @@ export class NavbarComponent implements OnInit {
 
   loggedIn: boolean;
 
-  constructor(private loginService: LoginService, private router : Router) {
-    if(localStorage.getItem('PortalAdminHasLoggedIn') == '') {
-      this.loggedIn = false;
-    } else {
-      this.loggedIn = true;
-    }
-  }
+	constructor(private loginService: LoginService, private router : Router) {
+		if(localStorage.getItem('PortalAdminHasLoggedIn') == '') {
+			this.loggedIn = false;
+		} else {
+			this.loggedIn = true;
+		}
+	}
 
-  logout(){
-    this.loginService.logout().subscribe(
-      res => {
-        localStorage.setItem('PortalAdminHasLoggedIn', '');
-      },
-      err => console.log(err)
-      );
-    location.reload();
-    this.router.navigate(['/login']);
-  }
+	logout(){
+		this.loginService.logout().subscribe(
+			res => {
+				localStorage.setItem('PortalAdminHasLoggedIn', '');
+			},
+			err => console.log(err)
+			);
+		location.reload();
+		this.router.navigate(['/login']);
+	}
 
-  getDisplay() {
+	getDisplay() {
     if(!this.loggedIn){
       return "none";
     } else {
