@@ -1,5 +1,6 @@
 package com.userfront.service.UserServiceImpl;
 
+import java.util.List;
 import java.util.Set;
 
 import org.slf4j.Logger;
@@ -98,5 +99,26 @@ public class UserServiceImpl implements UserService{
     public User saveUser (User user) {
         return userDao.save(user);
     }
+
+	public List<User> findUserList() {
+		return userDao.findAll();
+	}
+
+	//@Transactional-------we don't need this as we defined it on the to
+	public void enableUser(String username) {
+		User user = userDao.findByUsername(username);
+		user.setEnabled(true);
+		userDao.save(user);
+		
+	}
+
+	//@Transactional-------we don't need this as we defined it on the to
+	public void disableUser(String username) {
+		User user = userDao.findByUsername(username);
+		user.setEnabled(false);
+		System.out.println(user.isEnabled());
+		userDao.save(user);
+		System.out.println(username+"Is Disabled!");
+	}
     
 }
