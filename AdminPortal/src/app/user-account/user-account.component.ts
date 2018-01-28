@@ -25,22 +25,22 @@ export class UserAccountComponent implements OnInit {
 	}
 
 	onSelectPrimary(username: string) {
-    	this.router.navigate(['/primaryTransaction', username]);
-  	}	
+  	this.router.navigate(['/primaryTransaction', username]);
+	}	
 
-  	onSelectSavings(username: string) {
-    	this.router.navigate(['/savingsTransaction', username]);
-  	}	
+	onSelectSavings(username: string) {
+  	this.router.navigate(['/savingsTransaction', username]);
+	}	
 
-  	enableUser(username: string) {
-  		this.userService.enableUser(username).subscribe();
-  		location.reload();
-  	}
+	enableUser(username: string) {
+		this.userService.enableUser(username).subscribe();
+		location.reload();
+	}
 
-  	disableUser(username: string) {
-  		this.userService.disableUser(username).subscribe();
-  		location.reload();
-  	}
+	disableUser(username: string) {
+		this.userService.disableUser(username).subscribe();
+		location.reload();
+	}
 
 
   ngOnInit() {
