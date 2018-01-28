@@ -26,8 +26,8 @@ public class AppointmentResource {
 	}
 	
 	@RequestMapping("/{id}/confirm")
-	public void confirm(@PathVariable("id") Long id) {
-		appointmentService.confirmAppointment(id);
-	}
+    public void confirmAppointment(@PathVariable("id") Long id) {
+        appointmentService.confirmAppointment(id);
+    }
 
 }
